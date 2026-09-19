@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <header>
+            <h1>📁 Student Document Manager</h1>
+
+            <button onclick="logout()">
+                Logout
+            </button>
+        </header>
+
+        <main>
+
+            <h2>Welcome, Student 👋</h2>
+
+            <p>Manage all your important documents in one place.</p>
+
+            <!-- Statistics -->
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>📄 Documents</h3>
+                    <p>11</p>
+                </div>
+
+                <div class="card">
+                    <h3>📜 Certificates</h3>
+                    <p>5</p>
+                </div>
+
+                <div class="card">
+                    <h3>💼 Internships</h3>
+                    <p>2</p>
+                </div>
+
+                <div class="card">
+                    <h3>📚 Projects</h3>
+                    <p>4</p>
+                </div>
+
+            </div>
+
+            <!-- Upload -->
+
+            <section class="upload-section">
+
+                <h2>Upload Document</h2>
+
+                <input type="file" id="documentFile">
+
+                <br><br>
+
+                <select id="documentCategory">
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="Certificate">
+                        Certificate
+                    </option>
+
+                    <option value="Internship">
+                        Internship
+                    </option>
+
+                    <option value="Project">
+                        Project
+                    </option>
+
+                    <option value="Resume">
+                        Resume
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+                <br><br>
+
+                <button onclick="uploadDocument()">
+                    Upload Document
+                </button>
+
+            </section>
+
+            <!-- Documents -->
+
+            <section>
+
+                <h2>My Documents</h2>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search documents..."
+                    onkeyup="searchDocuments()"
+                >
+
+                <div id="documentList">
+
+                    <div class="document">
+                        <span>📄 Resume.pdf</span>
+                        <button>Download</button>
+                    </div>
+
+                    <div class="document">
+                        <span>📜 AWS Certificate.pdf</span>
+                        <button>Download</button>
+                    </div>
+
+                    <div class="document">
+                        <span>📚 Project Report.pdf</span>
+                        <button>Download</button>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
