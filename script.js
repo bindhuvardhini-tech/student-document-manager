@@ -42,11 +42,9 @@ function register() {
 // DOCUMENT UPLOAD
 function uploadDocument() {
 
-    const file =
-        document.getElementById("documentFile").files[0];
-
-    const category =
-        document.getElementById("documentCategory").value;
+    const fileInput = document.getElementById("documentFile");
+    const category = document.getElementById("documentCategory").value;
+    const file = fileInput.files[0];
 
     if (!file) {
         alert("Please select a document.");
@@ -58,9 +56,29 @@ function uploadDocument() {
         return;
     }
 
+    const documentDiv = document.createElement("div");
+    documentDiv.className = "document";
+
+    documentDiv.innerHTML = `
+        <span>📄 ${file.name} - ${category}</span>
+        <button onclick="downloadDocument('${file.name}')">
+            Download
+        </button>
+    `;
+
+    document.getElementById("documentList").appendChild(documentDiv);
+
     alert(file.name + " uploaded successfully!");
+
+    fileInput.value = "";
+    document.getElementById("documentCategory").value = "";
 }
 
+
+// DOWNLOAD
+function downloadDocument(fileName) {
+    alert("Download requested for: " + fileName);
+}
 
 // SEARCH DOCUMENTS
 function searchDocuments() {
