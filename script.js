@@ -6,6 +6,8 @@ function openRegister() {
     window.location.href = "login.html";
 }
 
+
+// LOGIN
 function login() {
 
     const email = document.getElementById("email").value;
@@ -16,25 +18,35 @@ function login() {
         return;
     }
 
-    alert("Login successful!");
+    // Demo login
+    if (email === "student@gmail.com" && password === "1234") {
 
-    window.location.href = "dashboard.html";
+        alert("Login successful!");
+
+        window.location.href = "dashboard.html";
+
+    } else {
+
+        alert("Invalid email or password.");
+
+    }
 }
 
+
+// REGISTER
 function register() {
     alert("Registration feature will be added later.");
 }
-function uploadDocument() {
-    alert("Document upload feature will be added later.");
-}
 
-function logout() {
-    window.location.href = "index.html";
-}
+
+// DOCUMENT UPLOAD
 function uploadDocument() {
 
-    const file = document.getElementById("documentFile").files[0];
-    const category = document.getElementById("documentCategory").value;
+    const file =
+        document.getElementById("documentFile").files[0];
+
+    const category =
+        document.getElementById("documentCategory").value;
 
     if (!file) {
         alert("Please select a document.");
@@ -46,12 +58,11 @@ function uploadDocument() {
         return;
     }
 
-    alert(
-        file.name + " uploaded successfully!"
-    );
+    alert(file.name + " uploaded successfully!");
 }
 
 
+// SEARCH DOCUMENTS
 function searchDocuments() {
 
     const search =
@@ -72,4 +83,10 @@ function searchDocuments() {
         }
 
     });
+}
+
+
+// LOGOUT
+function logout() {
+    window.location.href = "index.html";
 }
