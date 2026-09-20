@@ -104,6 +104,10 @@ function downloadDocument(fileName) {
 
     URL.revokeObjectURL(fileURL);
 }
+// SAMPLE DOCUMENT DOWNLOAD
+function downloadSampleDocument(fileName) {
+    alert("Sample document: " + fileName);
+}
 // SEARCH DOCUMENTS
 function searchDocuments() {
 
@@ -113,18 +117,49 @@ function searchDocuments() {
     const documents =
         document.querySelectorAll(".document");
 
+    let found = false;
+
     documents.forEach(function(document) {
 
         const text =
             document.textContent.toLowerCase();
 
         if (text.includes(search)) {
+
             document.style.display = "flex";
+            found = true;
+
         } else {
+
             document.style.display = "none";
+
         }
 
     });
+
+    // Show message when nothing is found
+    let noResult =
+        document.getElementById("noResult");
+
+    if (!found && search !== "") {
+
+        if (!noResult) {
+
+            noResult = document.createElement("p");
+            noResult.id = "noResult";
+            noResult.textContent = "No documents found.";
+
+            document.getElementById("documentList")
+                .appendChild(noResult);
+        }
+
+    } else {
+
+        if (noResult) {
+            noResult.remove();
+        }
+    }
+}
 }
 
 
