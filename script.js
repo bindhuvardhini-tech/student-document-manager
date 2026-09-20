@@ -39,6 +39,10 @@ function register() {
 }
 
 
+// Store selected files temporarily
+const uploadedFiles = {};
+
+
 // DOCUMENT UPLOAD
 function uploadDocument() {
 
@@ -55,6 +59,9 @@ function uploadDocument() {
         alert("Please select a category.");
         return;
     }
+
+    // Store the file
+    uploadedFiles[file.name] = file;
 
     const documentDiv = document.createElement("div");
     documentDiv.className = "document";
@@ -77,9 +84,26 @@ function uploadDocument() {
 
 // DOWNLOAD
 function downloadDocument(fileName) {
-    alert("Download requested for: " + fileName);
-}
 
+    const file = uploadedFiles[fileName];
+
+    if (!file) {
+        alert("File is not available. Please upload it again.");
+        return;
+    }
+
+    const fileURL = URL.createObjectURL(file);
+
+    const link = document.createElement("a");
+    link.href = fileURL;
+    link.download = fileName;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(fileURL);
+}
 // SEARCH DOCUMENTS
 function searchDocuments() {
 
